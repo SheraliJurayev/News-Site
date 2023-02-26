@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+</head>
+<body>
+    <h1 style="color: blue;">All news in today </h1>
+
+        {%for news in news_list %}
+         <a href="{%url 'news_detail_page' news.pk %}">  
+            <li>{{news.title}}</li>
+         </a>    
+        {%endfor%}
+    
+</body>
+</html>

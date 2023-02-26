@@ -1,0 +1,95 @@
+{%extends 'news/base.html'%}
+{%load static%}
+
+{%block title%} 404 Error Page {%endblock title%}
+
+{%block content%}
+
+  <section id="navArea">
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav main_nav">
+          <li class="active"><a href="{%url 'index_page'%}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
+          <li><a href="#">Technology</a></li>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile</a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Android</a></li>
+              <li><a href="#">Samsung</a></li>
+              <li><a href="#">Nokia</a></li>
+              <li><a href="#">Walton Mobile</a></li>
+              <li><a href="#">Sympony</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Laptops</a></li>
+          <li><a href="#">Tablets</a></li>
+          <li><a href="{url 'contact_page'}">Contact Us</a></li>
+          <li><a href="{%url 'error_page'%}">404 Page</a></li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <section id="newsSection">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="latest_newsarea"> <span>Latest News</span>
+          <ul id="ticker01" class="news_sticker">
+            <li><a href="#"><img src="../images/news_thumbnail3.jpg" alt="">My First News Item</a></li>
+            <li><a href="#"><img src="../images/news_thumbnail3.jpg" alt="">My Second News Item</a></li>
+            <li><a href="#"><img src="../images/news_thumbnail3.jpg" alt="">My Third News Item</a></li>
+            <li><a href="#"><img src="../images/news_thumbnail3.jpg" alt="">My Four News Item</a></li>
+            <li><a href="#"><img src="../images/news_thumbnail3.jpg" alt="">My Five News Item</a></li>
+            <li><a href="#"><img src="../images/news_thumbnail3.jpg" alt="">My Six News Item</a></li>
+            <li><a href="#"><img src="../images/news_thumbnail3.jpg" alt="">My Seven News Item</a></li>
+            <li><a href="#"><img src="../images/news_thumbnail3.jpg" alt="">My Eight News Item</a></li>
+            <li><a href="#"><img src="../images/news_thumbnail2.jpg" alt="">My Nine News Item</a></li>
+          </ul>
+          <div class="social_area">
+            <ul class="social_nav">
+              <li class="facebook"><a href="#"></a></li>
+              <li class="twitter"><a href="#"></a></li>
+              <li class="flickr"><a href="#"></a></li>
+              <li class="pinterest"><a href="#"></a></li>
+              <li class="googleplus"><a href="#"></a></li>
+              <li class="vimeo"><a href="#"></a></li>
+              <li class="youtube"><a href="#"></a></li>
+              <li class="mail"><a href="#"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="error_page">
+            <h3>We Are Sorry</h3>
+            <h1>404</h1>
+            <p>Unfortunately, the page you were looking for could not be found. It may be temporarily unavailable, moved or no longer exists</p>
+            <span></span> <a href="{%url 'index_page'%}" class="wow fadeInLeftBig">Go to home page</a> </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>Ommabop</span></h2>
+            <ul class="spost_nav">
+                {% for  news in news_list %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{% url 'news_detail_page' news.pk %}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
+                  <div class="media-body"> <a href="{% url 'news_detail_page' news.pk %}" class="catg_title"> {{news.title}}</a> </div>
+                </div>
+              </li>
+                {%endfor%}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+{%endblock content%}
