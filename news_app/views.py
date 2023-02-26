@@ -25,20 +25,20 @@ def news_detail(request, news):
     return render(request, 'news/news_detail.html', context = context)
 
 
-# def  homePageView(request):
-#     news_list =  News.objects.all().order_by('-publish_time') [:10]
-#     categories = Category.objects.all()
-#     local_one = News.objects.filter(category__name = "Mahalliy").order_by('-publish_time')[:1]
-#     local_news = News.objects.all().filter(category__name="Mahalliy").order_by('-publish_time')[:5]
+def  homePageView(request):
+    news_list =  News.objects.all().order_by('-publish_time') [:10]
+    categories = Category.objects.all()
+    local_one = News.objects.filter(category__name = "Mahalliy").order_by('-publish_time')[:1]
+    local_news = News.objects.all().filter(category__name="Mahalliy").order_by('-publish_time')[:5]
 
-#     context = {
-#         'news_list': news_list,
-#         'categories': categories,
-#         "local_one" : local_one,
-#         "local_news": local_news
-#     }    
+    context = {
+        'news_list': news_list,
+        'categories': categories,
+        "local_one" : local_one,
+        "local_news": local_news
+    }    
 
-#     return render(request, 'news/index.html',  context)
+    return render(request, 'news/index.html',  context)
 
 class HomePageView(ListView):   
     model = News
