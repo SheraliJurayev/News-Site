@@ -39,7 +39,7 @@ class News(models.Model):
 
 
     class Meta:
-        ordering = ['-publish_time']  # eng oxirgi yangilikni birinchilikda ko'rsatadi.
+        ordering = ['-publish_time']  # eng oxirgi yangilik birinchilikda ko'rsatadi.
 
     def __str__(self):
         return self.title 
