@@ -108,7 +108,7 @@ class ContactPageView(TemplateView):
 
         return render (request, "news/contact.html", context)      
 
-    class LocalNewsView(ListView):
+class LocalNewsView(ListView):
         model = News
         template_name = "news/mahalliy.html"
         context_object_name = "mahalliy_yangiliklar"
@@ -117,7 +117,7 @@ class ContactPageView(TemplateView):
             news=self.model.objects.all().filter(category_name = "Mahalliy")
             return news
 
-    class ForeignNewsView(ListView):
+class ForeignNewsView(ListView):
         model = News
         template_name = "news/xorij.html"
         context_object_name = "xorij_yangiliklari"
@@ -126,7 +126,7 @@ class ContactPageView(TemplateView):
             news=self.model.objects.all().filter(category_name = "Xorij")
             return news
 
-    class TechnologyNewsView(ListView):
+class TechnologyNewsView(ListView):
         model = News
         template_name = "news/texnologiya.html"
         context_object_name = "texnologiya_yangiliklari"
@@ -135,7 +135,7 @@ class ContactPageView(TemplateView):
             news=self.model.objects.all().filter(category_name = "Texnologiya")
             return news
 
-    class SportNewsView(ListView):
+class SportNewsView(ListView):
         model = News
         template_name = "news/sport.html"
         context_object_name = "sport_yangiliklari"
