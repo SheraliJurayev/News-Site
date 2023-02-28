@@ -106,4 +106,41 @@ class ContactPageView(TemplateView):
             'form': form 
         }    
 
-        return render (request, "news/contact.html", context)        
+        return render (request, "news/contact.html", context)      
+
+    class LocalNewsView(ListView):
+        model = News
+        template_name = "news/mahalliy.html"
+        context_object_name = "mahalliy_yangiliklar"
+
+        def get_queryset(self):
+            news=self.model.objects.all().filter(category_name = "Mahalliy")
+            return news
+
+    class ForeignNewsView(ListView):
+        model = News
+        template_name = "news/xorij.html"
+        context_object_name = "xorij_yangiliklari"
+
+        def get_queryset(self):
+            news=self.model.objects.all().filter(category_name = "Xorij")
+            return news
+
+    class TechnologyNewsView(ListView):
+        model = News
+        template_name = "news/texnologiya.html"
+        context_object_name = "texnologiya_yangiliklari"
+        
+        def get_queryset(self):
+            news=self.model.objects.all().filter(category_name = "Texnologiya")
+            return news
+
+    class SportNewsView(ListView):
+        model = News
+        template_name = "news/sport.html"
+        context_object_name = "sport_yangiliklari"
+        
+        def get_queryset(self):
+            news=self.model.objects.all().filter(category_name = "Sport")
+            return news
+
