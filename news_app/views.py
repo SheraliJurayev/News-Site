@@ -114,7 +114,7 @@ class LocalNewsView(ListView):
         context_object_name = "mahalliy_yangiliklar"
 
         def get_queryset(self):
-            news=self.model.objects.all().filter(category_name = "Mahalliy")
+            news=self.model.objects.all().filter(category__name = "Mahalliy")
             return news
 
 class ForeignNewsView(ListView):
@@ -123,7 +123,7 @@ class ForeignNewsView(ListView):
         context_object_name = "xorij_yangiliklari"
 
         def get_queryset(self):
-            news=self.model.objects.all().filter(category_name = "Xorij")
+            news=self.model.objects.all().filter(category__name = "Xorij")
             return news
 
 class TechnologyNewsView(ListView):
@@ -132,7 +132,7 @@ class TechnologyNewsView(ListView):
         context_object_name = "texnologiya_yangiliklari"
         
         def get_queryset(self):
-            news=self.model.objects.all().filter(category_name = "Texnologiya")
+            news=self.model.objects.all().filter(category__name = "Texnologiya")
             return news
 
 class SportNewsView(ListView):
@@ -141,6 +141,6 @@ class SportNewsView(ListView):
         context_object_name = "sport_yangiliklari"
         
         def get_queryset(self):
-            news=self.model.objects.all().filter(category_name = "Sport")
+            news=self.model.objects.all().filter(category__name = "Sport")
             return news
 
