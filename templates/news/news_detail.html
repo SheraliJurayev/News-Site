@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>News detail page</title>
-</head>
-<body>
-    <h1>{{ news_detail.title }}</h1>
-    <p> Published date: {{ news_detail.publish_time }}</p>
-    <p>{{ news_detail.body }}</p>
-</body>
-</html>
+{% extends "news/base.html"%}
+{% load static %}
+
+{% block title %} {{news.title}} {%endblock title%}
+
+{% block content %}
+
+    <h1>{{news.title}}</h1>
+    <h5>{{news.publish_time}}</h5>
+    <img src="{{ news.image.url }}">
+    <p>{{news.body}}</p>
+
+{% endblock content%}}
