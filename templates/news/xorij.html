@@ -7,11 +7,13 @@
 
     {% for news in xorij_yangiliklari %}
         <div class="container">
-            <div class="row">              
+            <div class="row">                   
                     <div class="col-sm-8">
-                        <img src="{{ news.image.url }}" alt="{{ news.title }}" style="width:50%;">
-                        <h2>{{news.title}}</h2>
-                    </div>               
+                        <a href="{{news.get_absolute_url}}">        
+                            <img src="{{ news.image.url }}" alt="{{ news.title }}" style="width:50%;">
+                            <h2>{{news.title}}</h2>
+                        </a>    
+                    </div>                   
             </div>
         </div>
     {%endfor%}
