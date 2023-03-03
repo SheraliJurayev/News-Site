@@ -20,7 +20,7 @@ def news_detail(request,news):
     news_detail = get_object_or_404(News, slug = news , status=News.Status.Published)
 
     context = {
-        'news_detail': news_detail
+        'news': news_detail
     }
 
     return render(request, 'news/news_detail.html', context = context)
