@@ -16,5 +16,6 @@ urlpatterns = [
     path('foreign/',ForeignNewsView.as_view(), name='foreign_news_page'),
     path('technology/',TechnologyNewsView.as_view(), name='technology_news_page'),
     path("sport/",SportNewsView.as_view(), name='sport_news_page'),
+    
 ]
 
