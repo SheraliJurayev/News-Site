@@ -1,12 +1,14 @@
 from django.urls import path 
 from .views import news_list , news_detail , HomePageView , ContactPageView , viewPage404 , LocalNewsView, \
-      ForeignNewsView, TechnologyNewsView, SportNewsView
+      ForeignNewsView, TechnologyNewsView, SportNewsView , NewsDeleteView , NewsUpdateView 
 
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='index_page'),
     path('all/', news_list, name='all_news_list'),
     path('news/<slug:news>/' , news_detail  ,  name='news_detail_page'),
+    path('news/<slug>/edit/' , NewsUpdateView.as_view(), name='news_update') , 
+    path('news/<slug>/delete/' , NewsDeleteView.as_view(), name='news_delete') , 
     path('contact-us/', ContactPageView.as_view(), name='contact_page'),
     path('error/', viewPage404, name='error_page'),
     path('local/',LocalNewsView.as_view(), name='local_news_page'), 
