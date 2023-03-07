@@ -39,7 +39,14 @@
             </ul>
           </div>
           <div class="header_top_right"> 
+            {% if request.user is_authenticated %}
+              <p> <a href="{% url 'user_profile' %}" style="color: green;">My profile</a></p>
+            {% else %}
+              <p><a href="{% url 'login' %}" style="color: green;">Saytga kirish</a></p>
+            {%endif%}
+
             <p>{% now "jS F Y H:i "%}</p>
+
           </div>
         </div>
       </div>
