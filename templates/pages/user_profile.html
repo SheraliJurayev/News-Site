@@ -12,7 +12,8 @@
     <label>First name:</label> <input value="{{user.first_name}}" readonly placeholder="Your first name"> <br>
     <label>Last name:</label> <input value="{{user.last_name}}" readonly placeholder="Your last name">
 
-    <h4><a href="#">Change password</a></h4>
+    <h4><a href="{% url 'password_change' %}" style="color: darkgreen;">Change password</a></h4>  
+    <h3><a href="{% url 'logout' %}" style="color: red;">Logout</a></h3>
 
 
 {% endblock content %}
