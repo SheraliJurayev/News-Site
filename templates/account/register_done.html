@@ -1,0 +1,9 @@
+{% extends "news/base.html "%}
+{% load static %}
+    {% block title %} Ro'yhatdan o'tish muvaffaqqiyatli bo'ldi {% endblock title %}
+{% block content %}
+    <h1>{{new_user.first_name}} , tabriklaymiz siz ro'yhatda eson omon o'tdingiz </h1>
+    <p>Ro'yhatdan o'tish muvaffaqqiyatli bo'ldi</p>
+    <p>Saytga kirishingiz mumkin... <button class="btn btn-success"><a href="{% url 'login' %}">LOGIN</a></button></p>
+   
+{% endblock content %}
