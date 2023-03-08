@@ -49,16 +49,17 @@ def user_register(request):
                 user_form.cleaned_data["password"]
                 )
             new_user.save()
+            
             context = {
                 "new_user": new_user
             }
 
-            return render(request, 'account/register_done.html', context)
+        return render(request, 'account/register_done.html', context)
     else:
         user_form = UserRegistrationForm(request.POST)
         context = {
                 "user_form": user_form
             }
-    return render(request, 'account/register.html' , context)        
+        return render(request, 'account/register.html' , context)        
 
 
