@@ -3,6 +3,9 @@ from .models import News , Category
 from .forms import ContactForm
 from django.views.generic import TemplateView , ListView , UpdateView , DeleteView , CreateView 
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from news_project.custom_permissions import OnlyLoggedSuperUser
  
 # Create your views here.
 
@@ -146,17 +149,17 @@ class SportNewsView(ListView):
             news=self.model.objects.all().filter(category__name = "Sport")
             return news
         
-class NewsUpdateView(UpdateView):
+class NewsUpdateView(OnlyLoggedSuperUser , UpdateView):
      model  = News 
      fields = ('title', 'body' , 'image', 'category' , 'status')
      template_name = 'crud/news_update.html'
 
-class NewsDeleteView(DeleteView):
+class NewsDeleteView(OnlyLoggedSuperUser , DeleteView):
      model = News
      template_name = 'crud/news_delete.html'
      success_url = reverse_lazy('home_page')
 
-class NewsCreateView(CreateView):
+class NewsCreateView(OnlyLoggedSuperUser , CreateView):
      model = News
      template_name = 'crud/news_create.html'
      fields = ('title','slug', 'body','image', 'category', 'status')     

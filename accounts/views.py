@@ -10,6 +10,7 @@ from .forms import UserEditForm , ProfileEditForm
 from django.contrib.auth.decorators import login_required  
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -89,7 +90,7 @@ def edit_user(request):           # +++++++++++++++++++++++++++++++++++
 
     return render(request, 'account/profile_edit.html', {'user_form': user_form, 'profile_form': profile_form})                
 
-class SignUpView(CreateView):
+class SignUpView(LoginRequiredMixin , CreateView):
     form_class = UserCreationForm
     succsess_url = reverse_lazy('login')
     template_name = 'account/register.html'
