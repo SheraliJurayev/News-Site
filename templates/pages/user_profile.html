@@ -7,6 +7,8 @@
 {% block content %}
     <h3> Welcome , {{user.username}} </h3>
     <h2>About you:</h2>
+    <img src="{{ profile.photo.url }}" width="30%" style="border-radius: 50%;"> 
+    <h4>Bith date : {{ profile.date_of_birth }}</h4>
     <label>Username:</label> <input value="{{user.username}}" readonly placeholder="Your username"> <br>
     <label>Email:</label> <input value="{{user.email}}" readonly placeholder="Your email"> <br>
     <label>First name:</label> <input value="{{user.first_name}}" readonly placeholder="Your first name"> <br>

@@ -40,8 +40,10 @@ def user_login(request):
 
 def dashboard_view(request):
     user = request.user
+    profile = Profile.objects.get(user=user)
     context = {
-        'user' : user
+        'user' : user ,
+        "profile": profile
     }
 
     return render (request , 'pages/user_profile.html', context)
@@ -112,4 +114,3 @@ class EditUserView(LoginRequiredMixin , View):        # ++++++++++++++++++++++++
             return redirect('user_profile')
         
 
-        
