@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from django.contrib.auth import  authenticate , login
 from django.contrib.auth.forms import UserCreationForm 
 from .forms import LoginForm , UserRegistrationForm 
-from django.views.generic import CreateView
+from django.views.generic import CreateView , View
 from django.urls import reverse_lazy
 from .models import Profile
 from .forms import UserEditForm , ProfileEditForm
+from django.contrib.auth.decorators import login_required  
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def user_login(request):
     if request.method == 'POST':
@@ -66,14 +68,10 @@ def user_register(request):
         context = {
                 "user_form": user_form
             }
-        return render(request, 'account/register.html' , context)        
-
-class SignUpView(CreateView):
-    form_class = UserCreationForm
-    succsess_url = reverse_lazy('login')
-    template_name = 'account/register.html'
-
-def edit_user(request):
+        return render(request, 'account/register.html' , context)
+    
+@login_required   
+def edit_user(request):           # +++++++++++++++++++++++++++++++++++
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user , data= request.POST)
         profile_form = ProfileEditForm(instance=request.user.profile , 
@@ -85,6 +83,30 @@ def edit_user(request):
 
     else:
         user_form =UserEditForm(instance=request.user)
-        profile_form =ProfileEditForm(instance=request.profile)
+        profile_form =ProfileEditForm(instance=request.user.profile)
 
-    return render(request, 'account/profile_edit.html', {'user_form': user_form, 'profile_form': profile_form})    
+    return render(request, 'account/profile_edit.html', {'user_form': user_form, 'profile_form': profile_form})                
+
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    succsess_url = reverse_lazy('login')
+    template_name = 'account/register.html'
+
+class EditUserView(LoginRequiredMixin , View):        # +++++++++++++++++++++++++++++++++++
+
+    def get(self, request):
+        user_form =UserEditForm(instance=request.user)
+        profile_form =ProfileEditForm(instance=request.user.profile)
+
+        return render(request, 'account/profile_edit.html', {'user_form': user_form, 'profile_form': profile_form}) 
+    
+    
+    def post(self, request):
+        user_form = UserEditForm(instance=request.user , data= request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile , 
+                                       data=request.POST , 
+                                       files=request.FILES) 
+        if profile_form.is_valid() and user_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('user_profile')
