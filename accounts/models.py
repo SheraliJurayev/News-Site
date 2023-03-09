@@ -8,7 +8,7 @@ class Profile(models.Model):
                                 on_delete=models.CASCADE , )  # agar user o'chsa profile ham o'chadi 
     
     photo = models.ImageField(upload_to='users/' , blank=True , null=True)
-    date_of_birth = models.DateField(blank=True  , null=True)
+    date_of_birth = models.DateField( blank=True , null=True)
 
     def get_absolute_url(self):
         return reverse('lawyer_detail', kwargs={'lawyer_slug': self.lawyer_slug})
