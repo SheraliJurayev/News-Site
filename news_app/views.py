@@ -3,7 +3,7 @@ from .models import News , Category
 from .forms import ContactForm
 from django.views.generic import TemplateView , ListView , UpdateView , DeleteView , CreateView 
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin , UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from news_project.custom_permissions import OnlyLoggedSuperUser
  
@@ -159,7 +159,10 @@ class NewsDeleteView(OnlyLoggedSuperUser , DeleteView):
      template_name = 'crud/news_delete.html'
      success_url = reverse_lazy('home_page')
 
+
+
 class NewsCreateView(OnlyLoggedSuperUser , CreateView):
      model = News
      template_name = 'crud/news_create.html'
-     fields = ('title','slug', 'body','image', 'category', 'status')     
+     fields = ('title','slug', 'body','image', 'category', 'status')  
+

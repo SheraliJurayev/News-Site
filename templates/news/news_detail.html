@@ -11,8 +11,10 @@
     <p>{{news.body}}</p>
 
     <div class="card-footer text-center" >
+        {% if request.user.is_authenticated and request.user.is_superuser %}
         |<a href="{% url 'news_update' news.slug %}">Tahrirlash</a> |
         <a href="{% url 'news_delete' news.slug %}">O'chirish</a> |
         <a href="{% url 'news_create' %}">Yangilik qo'shish</a>
+        {%endif%}
     </div> 
 {% endblock content %}
