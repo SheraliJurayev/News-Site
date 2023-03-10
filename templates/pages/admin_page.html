@@ -1,0 +1,33 @@
+{% extends 'news/base.html' %}
+
+{% block title %} Admin sahifasi {% endblock title %}
+
+{% block content %}
+    <h1>Admin sahifasi</h1>
+    <h3>Barcha adminlar</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Ismi</th>
+            <th scope="col">Familiyasi</th>
+          </tr>
+        </thead>
+       
+        <tbody>
+            {% for user in admin_users %}
+          <tr>
+            <th scope="row">#</th>
+            <td>{{user.username}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+          </tr>
+            {%endfor%}
+        </tbody>
+        
+      </table>
+
+      <button style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" ><a href="{%url 'news_create' %}" style="color: blue;">Add news + </a></button> 
+{% endblock content%}
+

@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin , UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from news_project.custom_permissions import OnlyLoggedSuperUser
+from django.contrib.auth.admin import User
  
 # Create your views here.
 
@@ -165,4 +166,13 @@ class NewsCreateView(OnlyLoggedSuperUser , CreateView):
      model = News
      template_name = 'crud/news_create.html'
      fields = ('title','slug', 'body','image', 'category', 'status')  
+
+
+def  admin_page_view(request):
+     admin_users = User.objects.filter(is_superuser=True)
+
+     context = {
+          'admin_users': admin_users
+          }
+     return render(request, 'pages/admin_page.html', context)
 
