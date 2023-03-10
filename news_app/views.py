@@ -22,14 +22,14 @@ def news_list(request):
 
 def news_detail(request,news):
 
-    news_detail = get_object_or_404(News, slug = news , status=News.Status.Published)
+    news = get_object_or_404(News, slug=news , status=News.Status.Published)
     comments = news.comments.filter(active=True)
     new_comment = None
     if request.method == 'POST':
          comment_form = CommentForm(data=request.POST)
-         if comment_form.as_valid():
+         if comment_form.is_valid():
               # yangi coment obyektini yaratamiz lekin DB ga yuklamaymiz
-              news_comment = comment_form.save(commit=False)
+              new_comment = comment_form.save(commit=False)
               new_comment.news = news
 
               # comment egasini yozgan userga bog'ladik
@@ -37,14 +37,15 @@ def news_detail(request,news):
 
               # DB ga saqlaymiz
               new_comment.save()
+              comment_form = CommentForm()
 
     else :
-         comment_form = CommentForm          
+         comment_form = CommentForm()         
 
     context = {
          
-        'news': news_detail , 
-        'new_comment':new_comment , 
+        'news': news , 
+        'new_comment': new_comment , 
         'comments' : comments,
         'comment_form' : comment_form 
 
