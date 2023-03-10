@@ -4,7 +4,7 @@ from .forms import ContactForm
 from django.views.generic import TemplateView , ListView , UpdateView , DeleteView , CreateView 
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin , UserPassesTestMixin
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required , user_passes_test
 from news_project.custom_permissions import OnlyLoggedSuperUser
 from django.contrib.auth.admin import User
  
@@ -167,8 +167,9 @@ class NewsCreateView(OnlyLoggedSuperUser , CreateView):
      template_name = 'crud/news_create.html'
      fields = ('title','slug', 'body','image', 'category', 'status')  
 
-
-def  admin_page_view(request):
+@login_required
+@user_passes_test(lambda u: u.is_superuser) # faqat super userlar adminpage ga kira oladigan qiladi
+def  admin_page_view( request):
      admin_users = User.objects.filter(is_superuser=True)
 
      context = {
