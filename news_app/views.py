@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin , UserPassesTestMixin
 from django.contrib.auth.decorators import login_required , user_passes_test
 from news_project.custom_permissions import OnlyLoggedSuperUser
 from django.contrib.auth.admin import User
+from django.db.models import Q
  
 # Create your views here.
 
@@ -204,3 +205,10 @@ class SearchResultsList(ListView):
     model = News
     template_name = 'news/search_result.html'
     context_object_name = 'all_news_results'
+
+    def get_queryset(self):
+         query = self.request.GET.get('q')
+         return News.objects.filter(
+               Q(title__icontains=query) | Q(body__icontains=query)
+                                    )
+ 
