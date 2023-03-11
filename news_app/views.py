@@ -1,4 +1,4 @@
-from django.shortcuts import render , get_object_or_404 , HttpResponse
+from django.shortcuts import render , get_object_or_404 , HttpResponse , redirect
 from .models import News , Category 
 from .forms import ContactForm , CommentForm
 from django.views.generic import TemplateView , ListView , UpdateView , DeleteView , CreateView 
@@ -206,9 +206,11 @@ class SearchResultsList(ListView):
     template_name = 'news/search_result.html'
     context_object_name = 'all_news_results'
 
-    def get_queryset(self):
+    def get_queryset(self):         
          query = self.request.GET.get('q')
          return News.objects.filter(
                Q(title__icontains=query) | Q(body__icontains=query)
                                     )
- 
+        
+
+      

@@ -1,8 +1,21 @@
 {% extends 'news/base.html' %}
 {%block title %} Qidiruv natijalari {%endblock title%}
 {%block content %}
-    <h2>Qidiruv natijalari</h2>
-    {% for new in all_news_results %}
-        <h3>{{new.title}}</h3>
-    {%endfor%}
+    {% if all_news_results %}
+        <h2>Qidiruv natijalari</h2>
+        {% for news in all_news_results %}
+        <div class="card bg-dark text-white">
+            <img src="{{ news.image.url }}" class="card-img" width="30%">
+            <div class="card-img-overlay">
+              <h5 class="card-title"><a href="{% url 'news_detail_page' news.slug %}" style="color: red;">{{news.title}}</h5>
+              <p class="card-text" style="color: gray;">{{ news.body|truncatewords:30 }}</p>
+              <p class="card-text" style="color: black;">{{news.updated_time}}</p>
+            </div>
+          </div>
+        {%endfor%}
+    {% else %}
+
+        <h4>Oops , Natija topilmadi ! </h4>
+
+    {% endif %}
 {%endblock content%}

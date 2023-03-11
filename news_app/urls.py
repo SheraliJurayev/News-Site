@@ -1,6 +1,7 @@
 from django.urls import path 
 from .views import news_list , news_detail , HomePageView , ContactPageView , viewPage404 , LocalNewsView, \
-      ForeignNewsView, TechnologyNewsView, SportNewsView , NewsDeleteView , NewsUpdateView  , NewsCreateView , admin_page_view , SearchResultsList
+      ForeignNewsView, TechnologyNewsView, SportNewsView , NewsDeleteView , NewsUpdateView  , NewsCreateView , \
+          admin_page_view , SearchResultsList 
 
 
 urlpatterns = [
