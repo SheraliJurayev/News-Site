@@ -29,11 +29,11 @@
             {{ comment.body | linebreaks }}
         </div>
      {%endfor%}
-{%if user.is_authenticated% }   
+    {%if user.is_authenticated%}   
      <div class="col-md-8 card mb-4 mt-3">
             <div class="card-body">
                     <h3>Izoh qoldirish</h3>
-                        <form method="post" style="margin-top: 1.3em;">
+                        <form method="post" style="margin-top: 1.3em;" >
                             {%csrf_token%}
                             {{ comment_form.as_p }}
                         <button type="submit" class="btn btn-success btn-lg">
@@ -42,12 +42,13 @@
                     </form>
         </div>
      </div>
-{%else%}
+    {% else %}
     <div class="card-body">
         <p class="text-danger">
             Faqatgina ro'yxatdan o'tgan foydalanuvchilargina izoh qoldirishi mumkin.
             <p>Izoh qoldirish uchun <a href="{% url 'user_register' %}" style="color: green;"> ro'yhatdan o'ting </a> yoki <a href="{% url 'login' %}" style="color: green;"> login </a> qiling </p>
         </p>
     </div>     
+    {%endif%}
 
 {% endblock content %}
