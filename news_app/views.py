@@ -38,7 +38,9 @@ def news_detail(request,news):
          hitcontext['total_hits']  = hits
 
     comments = news.comments.filter(active=True)
+    comment_count = comments.count()
     new_comment = None
+
     if request.method == 'POST':
          comment_form = CommentForm(data=request.POST)
          if comment_form.is_valid():
@@ -52,16 +54,19 @@ def news_detail(request,news):
               # DB ga saqlaymiz
               new_comment.save()
               comment_form = CommentForm()
+                       
 
     else :
-         comment_form = CommentForm()         
+         comment_form = CommentForm()   
+            
 
     context = {
          
         'news': news , 
         'new_comment': new_comment , 
         'comments' : comments,
-        'comment_form' : comment_form 
+        'comment_form' : comment_form ,
+        "comment_count" : comment_count
 
     }
 

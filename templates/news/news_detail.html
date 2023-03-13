@@ -7,7 +7,9 @@
 {% block content %}
 
     <h1>{{news.title}}</h1>
-    <h5>{{news.publish_time}} | <i class="fa fa-eye" aria-hidden="true">{% get_hit_count for news%}</i></h5>
+    <h5>{{news.publish_time}} | <i class="fa fa-eye" aria-hidden="true">
+        {% get_hit_count for news%} | Izohlar soni: {{comment_count}} ta </i>
+    </h5>    
     <img src="{{ news.image.url }}">
     <p>{{news.body}}</p>
 
