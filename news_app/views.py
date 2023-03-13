@@ -9,7 +9,7 @@ from news_project.custom_permissions import OnlyLoggedSuperUser
 from django.contrib.auth.admin import User
 from django.db.models import Q 
 from hitcount.utils import get_hitcount_model
-from hitcount.models import HitCountMixin
+from hitcount.views import HitCountMixin
 # Create your views here.
 
 def news_list(request):
@@ -29,8 +29,8 @@ def news_detail(request,news):
     #hitcount logic
     hit_count = get_hitcount_model().objects.get_for_object(news)
     hits = hit_count.hits
-    hitcontext =  context ['hitcount'] = {'pk' : hit_count.pk}
-    hit_count_response =HitCountMixin.hit_count(request , hit_count)
+    hitcontext =  context ['hitcount'] = {'pk' : hit_count.pk }
+    hit_count_response = HitCountMixin.hit_count(request , hit_count)
     if hit_count_response.hit_counted :
          hits = hits + 1
          hitcontext['hit_counted'] = hit_count_response.hit_counted

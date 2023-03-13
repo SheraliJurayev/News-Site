@@ -36,6 +36,11 @@
               <li><a href="{%url 'index_page'%}">Bosh sahifa</a></li>
               <li><a href="#">Biz haqimizda</a></li>
               <li><a href="{%url 'contact_page'%}">Biz bilan aloqa  </a></li>
+
+              {% if user.is_authenticated and user.is_superuser %}
+              <li><a href="{% url 'admin_page'%}">Admin sahifasi</a></li>
+              {%endif%}
+
             </ul>
           </div>
           <div class="header_top_right"> 
@@ -58,7 +63,7 @@
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
-          <div class="logo_area"><a href="index.html" class="logo"><img src="{% static 'images/logo.jpg' %}" alt=""></a></div>
+          <div class="logo_area"><a href="{% url 'index_page'%}" class="logo"><img src="{% static 'images/logo.jpg' %}" alt=""></a></div>
           <div class="add_banner"><a href="#"><img src="{%static 'images/addbanner_728x90_V1.jpg'%}" alt=""></a></div>
         </div>
       </div>
