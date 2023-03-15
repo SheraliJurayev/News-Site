@@ -3,8 +3,8 @@
 {% load static %}
     {% block title %}{% blocktranslate %}Ro'yhatdan o'tish muvaffaqqiyatli bo'ldi  {% endblocktranslate %} {% endblock title %}
 {% block content %}
-    <h1>{% blocktranslate %} {{new_user.first_name}} , tabriklaymiz siz ro'yhatda eson omon o'tdingiz{% endblocktranslate %} </h1>
+    <h1> {{new_user.first_name}}{% blocktranslate %} , tabriklaymiz siz ro'yhatda eson omon o'tdingiz{% endblocktranslate %} </h1>
     <p>{% blocktranslate %}Ro'yhatdan o'tish muvaffaqqiyatli bo'ldi {% endblocktranslate %}</p>
-    <p>{% blocktranslate %} Saytga kirishingiz mumkin...{% endblocktranslate %} <button class="btn btn-success"><a href="{% url 'login' %}">{% blocktranslate %} LOGIN{% endblocktranslate %}</a></button></p>
+    <p>{% blocktranslate %} Saytga kirishingiz mumkin...{% endblocktranslate %} <button class="btn btn-success"><a href="{% url 'login' %}">{% blocktranslate %}LOGIN {% endblocktranslate %}</a></button></p>
    
 {% endblock content %}
