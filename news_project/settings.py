@@ -129,6 +129,9 @@ LANGUAGES = [
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
 
 
+LOCALE_PATH = BASE_DIR , 'locale'
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

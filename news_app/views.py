@@ -207,7 +207,7 @@ class NewsDeleteView(OnlyLoggedSuperUser , DeleteView):
 class NewsCreateView(OnlyLoggedSuperUser , CreateView):
      model = News
      template_name = 'crud/news_create.html'
-     fields = ('title','slug', 'body','image', 'category', 'status')  
+     fields = ('title','title_en','title_uz','title_ru','slug', 'body','body_en','body_uz','body_ru','image', 'category', 'status')  
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser) # faqat super userlar adminpage ga kira oladigan qiladi
