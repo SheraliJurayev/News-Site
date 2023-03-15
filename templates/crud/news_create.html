@@ -1,14 +1,15 @@
 {% extends 'news/base.html' %}
+{% load i18n %}
 {% load static %}
 
-{% block title %} Yangilik qo'shish {% endblock title %}
+{% block title %} {% blocktranslate %}Yangilik qo'shish  {% endblocktranslate %}{% endblock title %}
 
 {% block content %}
 
-    <h2 class="text-centr">Yangilik qo'shish</h2>
+    <h2 class="text-centr">{% blocktranslate %}Yangilik qo'shish {% endblocktranslate %}</h2>
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
        {{ form.as_p }}
-        <button type="submit" class="btn btn-success ">Yangilik qo'shish</button>   
+        <button type="submit" class="btn btn-success ">{% blocktranslate %} Yangilik qo'shish{% endblocktranslate %}</button>   
     </form>
 
 {% endblock content %}

@@ -1,8 +1,9 @@
 {%extends 'news/base.html'%}
 {%load static%}
+{% load i18n %}
 {%load hitcount_tags%}
 
-{%block title%} Home Page {%endblock title%}
+{%block title%} {% blocktranslate %}Home Page {% endblocktranslate %} {%endblock title%}
 
 {%block content%}
 
@@ -25,7 +26,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="latest_post">
-          <h2><span>So'ngi yangiliklar</span></h2>
+          <h2><span>{% blocktranslate %} So'ngi yangiliklar{% endblocktranslate %}</span></h2>
           <div class="latest_post_container">
             <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
             <ul class="latest_postnav">
@@ -51,7 +52,7 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
           <div class="single_post_content">
-            <h2><span>Mahalliy</span></h2>
+            <h2><span>{% blocktranslate %}Mahalliy {% endblocktranslate %}</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav  wow fadeInDown">
                 {% for mahalliy in mahalliy_xabarlar %}
@@ -60,7 +61,7 @@
                   <figure class="bsbig_fig"> <a href="{{ mahalliy.get_absolute_url }}" class="featured_img"> <img alt="" src="{{mahalliy.image.url}}"> <span class="overlay"></span> </a>
                     <figcaption> <a href="{{ mahalliy.get_absolute_url }}">{{mahalliy.title|truncatewords:5}}</a> </figcaption>
                     <p>{{mahalliy.title}}</p>
-                    <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for mahalliy%}</p> 
+                    <p style="color: red;">{% blocktranslate %} Ko'rilganlar soni: {% endblocktranslate %}<i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for mahalliy%}</p> 
 
 
                   </figure> 
@@ -76,7 +77,7 @@
                 <li>
                   <div class="media wow fadeInDown"> <a href="{{ mahalliy.get_absolute_url }}" class="media-left"> <img alt="" src="{{mahalliy.image.url}}"> </a>
                     <div class="media-body"> <a href="{{ mahalliy.get_absolute_url }}" class="catg_title">{{mahalliy.title}}</a> 
-                      <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for mahalliy%}</p> 
+                      <p style="color: red;">{% blocktranslate %} Ko'rilganlar soni: {% endblocktranslate %}<i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for mahalliy%}</p> 
 
                     </div>
 
@@ -98,7 +99,7 @@
                     <figure class="bsbig_fig"> <a href="{{ xorij.get_absolute_url }}" class="featured_img"> <img alt="" src="{{xorij.image.url}}"> <span class="overlay"></span> </a>
                       <figcaption> <a href="{{ xorij.get_absolute_url }}">{{xorij.title}}</a> </figcaption>
                       <p>{{xorij.body|truncatewords:10 }}</p>
-                      <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for xorij%}</p> 
+                      <p style="color: red;">{% blocktranslate %} Ko'rilganlar soni: {% endblocktranslate %}<i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for xorij%}</p> 
 
                     </figure>
                   </li>
@@ -111,7 +112,7 @@
                   <li>
                     <div class="media wow fadeInDown"> <a href="{{ xorij.get_absolute_url }}" class="media-left"> <img alt="" src="{{xorij.image.url}}"> </a>
                       <div class="media-body"> <a href="{{ xorij.get_absolute_url }}" class="catg_title">{{xorij.title}}</a>
-                        <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for xorij%}</p> 
+                        <p style="color: red;">{% blocktranslate %}Ko'rilganlar soni: {% endblocktranslate %} <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for xorij%}</p> 
 
                       </div>
 
@@ -124,7 +125,7 @@
             </div>
             <div class="technology">
               <div class="single_post_content">
-                <h2><span>Texnologiya</span></h2>
+                <h2><span>{% blocktranslate %}Texnologiya {% endblocktranslate %}</span></h2>
                 <ul class="business_catgnav">
                     {% for texnologiya in texnologiya_xabarlari%}
                       {% if forloop.first %}
@@ -132,7 +133,7 @@
                     <figure class="bsbig_fig wow fadeInDown"> <a href="{{ texnologiya.get_absolute_url }}" class="featured_img"> <img alt="" src="{{texnologiya.image.url}}"> <span class="overlay"></span> </a>
                       <figcaption> <a href="{{ texnologiya.get_absolute_url }}">{{texnologiya.title}}</a> </figcaption>
                       <p>{{texnologiya.body|truncatewords:10}}</p>
-                      <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for texnologiya%}</p> 
+                      <p style="color: red;">{% blocktranslate %}Ko'rilganlar soni:  {% endblocktranslate %}<i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for texnologiya%}</p> 
 
                     </figure>
                   </li>
@@ -145,7 +146,7 @@
                   <li>
                     <div class="media wow fadeInDown"> <a href="{{ texnologiya.get_absolute_url }}" class="media-left"> <img alt="" src="{{texnologiya.image.url}}"> </a>
                       <div class="media-body"> <a href="{{ texnologiya.get_absolute_url }}" class="catg_title">{{texnologiya.title}}</a> 
-                        <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for texnologiya%}</p> 
+                        <p style="color: red;">{% blocktranslate %}Ko'rilganlar soni:  {% endblocktranslate %}<i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for texnologiya%}</p> 
 
                       </div>
 
@@ -158,7 +159,7 @@
             </div>
           </div>
           <div class="single_post_content">
-            <h2><span>Photography</span></h2>
+            <h2><span>{% blocktranslate %} Photography{% endblocktranslate %}</span></h2>
             <ul class="photograph_nav  wow fadeInDown">
               <li>
                 <div class="photo_grid">
@@ -193,7 +194,7 @@
             </ul>
           </div>
           <div class="single_post_content">
-            <h2><span>Sport</span></h2>
+            <h2><span>{% blocktranslate %} Sport{% endblocktranslate %}</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav">
                 {% for sport in sport_xabarlari%}
@@ -202,7 +203,7 @@
                   <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="{{ sport.get_absolute_url }}"> <img src="{{sport.image.url}}" alt=""> <span class="overlay"></span> </a>
                     <figcaption> <a href="{{ sport.get_absolute_url }}">{{sport.title}}</a> </figcaption>
                     <p>{{sport.body|truncatewords:10}}</p>   
-                    <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for sport%}</p> 
+                    <p style="color: red;">{% blocktranslate %}Ko'rilganlar soni: {% endblocktranslate %} <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for sport%}</p> 
                    
 
                   </figure>
@@ -218,7 +219,7 @@
                 <li>
                   <div class="media wow fadeInDown"> <a href="{{ sport.get_absolute_url }}" class="media-left"> <img alt="" src="{{sport.image.url}}"> </a>
                     <div class="media-body"> <a href="{{ sport.get_absolute_url }}" class="catg_title">{{sport.title}}</a>                     
-                    <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for sport%}</p> 
+                    <p style="color: red;">{% blocktranslate %} Ko'rilganlar soni: {% endblocktranslate %}<i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for sport%}</p> 
                     </div>
                                      
 
@@ -234,14 +235,14 @@
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="single_sidebar">
-            <h2><span>Ommabop</span></h2>
+            <h2><span>{% blocktranslate %}Ommabop {% endblocktranslate %}</span></h2>
             <ul class="spost_nav">
 
               {% for news in news_list%}
               <li>
                 <div class="media wow fadeInDown"> <a href="{% url 'news_detail_page' news.pk %}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
                   <div class="media-body"> <a href="{% url 'news_detail_page' news.pk %}" class="catg_title"> {{news.title}}</a>
-                    <p style="color: red;">Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for news%}</p> 
+                    <p style="color: red;">{% blocktranslate %} Ko'rilganlar soni: {% endblocktranslate %}<i class="fa fa-eye" aria-hidden="true" style="color: black;"></i> {% get_hit_count for news%}</p> 
                   </div>
                 </div>
               </li>
@@ -251,9 +252,9 @@
           </div>
           <div class="single_sidebar">
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
-              <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a></li>
-              <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">Comments</a></li>
+              <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">{% blocktranslate %}Category {% endblocktranslate %}</a></li>
+              <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">{% blocktranslate %} Video{% endblocktranslate %}</a></li>
+              <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">{% blocktranslate %} Comments{% endblocktranslate %}</a></li>
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="category">
@@ -295,19 +296,19 @@
             </div>
           </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Sponsor</span></h2>
+            <h2><span>{% blocktranslate %}Homiy {% endblocktranslate %}</span></h2>
             <a class="sideAdd" href="#"><img src="{%static 'images/add_img.jpg'%}" alt=""></a> </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Barcha kategoriyalar</span></h2>
+            <h2><span>{% blocktranslate %}Barcha kategoriyalar {% endblocktranslate %}</span></h2>
             <select class="catgArchive">
-              <option>Kategoriyani tanlang</option>
+              <option>{% blocktranslate %} Kategoriyani tanlang{% endblocktranslate %}</option>
                 {%for kategory in categories%}
               <option>{{kategory.name}}</option>
                 {%endfor%}
             </select>
           </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Links</span></h2>
+            <h2><span>{% blocktranslate %}Havolalar {% endblocktranslate %}</span></h2>
             <ul>
               <li><a href="#">Blog</a></li>
               <li><a href="#">Rss Feed</a></li>

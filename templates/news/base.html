@@ -34,24 +34,24 @@
         <div class="header_top">
           <div class="header_top_left">
             <ul class="top_nav">
-              <li><a href="{%url 'index_page'%}">Bosh sahifa</a></li>
-              <li><a href="#">Biz haqimizda</a></li>
-              <li><a href="{%url 'contact_page'%}">Biz bilan aloqa  </a></li>
+              <li><a href="{%url 'index_page'%}">{% blocktranslate %} Bosh sahifa{% endblocktranslate %}</a></li>
+              <li><a href="#">{% blocktranslate %}Biz haqimizda {% endblocktranslate %}</a></li>
+              <li><a href="{%url 'contact_page'%}">{% blocktranslate %}Biz bilan aloqa  {% endblocktranslate %} </a></li>
 
               {% if user.is_authenticated and user.is_superuser %}
-              <li><a href="{% url 'admin_page'%}">Admin sahifasi</a></li>
+              <li><a href="{% url 'admin_page'%}">{% blocktranslate %}Admin sahifasi {% endblocktranslate %}</a></li>
               {%endif%}
             </ul>
           </div>
           <div class="header_top_right"> 
             {% if request.user.is_authenticated %}
-              <p> <a href="{%url 'logout' %}" style="color: red;">Logout</a></p>
+              <p> <a href="{%url 'logout' %}" style="color: red;">{% blocktranslate %}Logout {% endblocktranslate %}</a></p>
 
-              <p> <a href="{% url 'user_profile' %}" style="color: green;">My profile</a></p>
+              <p> <a href="{% url 'user_profile' %}" style="color: green;">{% blocktranslate %}My profile {% endblocktranslate %}</a></p>
 
             {% else %}
 
-              <p><a href="{% url 'login' %}" style="color: green;">Saytga kirish</a></p>
+              <p><a href="{% url 'login' %}" style="color: green;">{% blocktranslate %} Saytga kirish{% endblocktranslate %}</a></p>
 
             {%endif%}
             
@@ -75,8 +75,8 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav main_nav">
-          <li class="active"><a href="{%url 'index_page'%}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
-          <li><a href="{%url 'local_news_page'%}">Mahalliy</a></li> 
+          <li class="active"><a href="{%url 'index_page'%}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">{% blocktranslate %} Home{% endblocktranslate %}</span></a></li>
+          <li><a href="{%url 'local_news_page'%}">{% blocktranslate %}Mahalliy {% endblocktranslate %}</a></li> 
           <!-- <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile</a> -->
            <!-- <ul class="dropdown-menu" role="menu"> -->
               <!-- <li><a href="#">Mahalliy</a></li>
@@ -86,9 +86,9 @@
               <li><a href="#">Sympony</a></li>
             </ul> -->
           </li>
-          <li><a href="{%url 'foreign_news_page'%}">Xorij</a></li>
-          <li><a href="{%url 'technology_news_page'%}">Texnologiya</a></li>
-          <li><a href="{%url 'sport_news_page'%}">Sport</a></li>
+          <li><a href="{%url 'foreign_news_page'%}">{% blocktranslate %}Xorij {% endblocktranslate %}</a></li>
+          <li><a href="{%url 'technology_news_page'%}">{% blocktranslate %} Texnologiya{% endblocktranslate %}</a></li>
+          <li><a href="{%url 'sport_news_page'%}">{% blocktranslate %} Sport{% endblocktranslate %}</a></li>
           <li><a href="{%url 'error_page'%}">404 Page</a></li>
           <li>
             <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
@@ -152,7 +152,7 @@
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInLeftBig">
-            <h2>Flickr Images</h2>
+            <h2>{% blocktranslate %} Images{% endblocktranslate %}</h2>
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
