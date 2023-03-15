@@ -1,14 +1,14 @@
 {% extends "news/base.html "%}
 {% load static %}
 
-{% block title %} Ro'yhatdan o'tish {% endblock title %}
+{% block title %} {% blocktranslate %}Ro'yhatdan o'tish {% endblocktranslate %} {% endblock title %}
 
 {% block content %}
-    <h1>Ro'hatdan o'tish</h1>
-    <p>Ro'yhatdan o'tish uchun formani to'ldiring</p>
+    <h1>{% blocktranslate %} Ro'hatdan o'tish{% endblocktranslate %}</h1>
+    <p>{% blocktranslate %} Ro'yhatdan o'tish uchun formani to'ldiring{% endblocktranslate %}</p>
     <form method="post">
         {%csrf_token%}
         {{ user_form.as_p}}
-        <button type="submit" class="btn btn-success">Register</button>
+        <button type="submit" class="btn btn-success">{% blocktranslate %} Register{% endblocktranslate %}</button>
     </form>
 {% endblock content %}

@@ -1,20 +1,22 @@
 {% extends 'news/base.html'%}
-
+{% load i18n %}
 {% load static %}
 
-{% block title%} Profil ma'lumotlarini o'zgartirish {%endblock title%}
+{% block title%} 
+{% blocktranslate %} Profil ma'lumotlarini o'zgartirish{% endblocktranslate %} 
+{%endblock title%}
 
 {% block content %}
 
-<h1>Foydalanuvchi ma'lumotlarini o'zgartirish</h1>
+<h1>{% blocktranslate %}Foydalanuvchi ma'lumotlarini o'zgartirish {% endblocktranslate %}</h1>
 
-<p>Siz quyidagi forma orqali profilingizni tahrirlay olasiz:</p>
+<p>{% blocktranslate %} Siz quyidagi forma orqali profilingizni tahrirlay olasiz{% endblocktranslate %}:</p>
 
 <form method="post" enctype="multipart/form-data">
     {%csrf_token%}
     {{profile_form.as_p}}
     {{user_form.as_p}}
-    <button type="submit" class="btn btn-success">Saqlash</button>
+    <button type="submit" class="btn btn-success">{% blocktranslate %} Saqlash{% endblocktranslate %}</button>
 </form>
 
 {% endblock content %}

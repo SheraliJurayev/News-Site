@@ -1,12 +1,12 @@
 {% extends "news/base.html "%}
 {% load static %}
 
-{%block title%} Logout sahifasi {%endblock title%}
+{%block title%} {% blocktranslate %}Logout sahifasi {% endblocktranslate %} {%endblock title%}
 
 {%block content%}
-        <h2>Log Out </h2>
-        <p>Siz veb saytdan chiqdinggiz
-           <button class="btn btn-success"><a href="{% url 'login' %}" style="color: white;">Login</a></button> 
+        <h2>{% blocktranslate %} Log Out{% endblocktranslate %} </h2>
+        <p>{% blocktranslate %} Siz veb saytdan chiqdinggiz{% endblocktranslate %}
+           <button class="btn btn-success"><a href="{% url 'login' %}" style="color: white;">{% blocktranslate %}Login {% endblocktranslate %}</a></button> 
         </p>
 
         

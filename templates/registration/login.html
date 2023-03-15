@@ -1,19 +1,19 @@
 {% extends "news/base.html "%}
 {% load static %}
 
-{%block title%} Login sahifasi {%endblock title%}
+{%block title%} {% blocktranslate %}Login sahifasi {% endblocktranslate %} {%endblock title%}
 
 {%block content%}
-        <h2>Veb-saytga kirish --- Login </h2>
-        <p>Iltimos saytga kirish uchun quyidagi formani to'ldiring</p>
+        <h2>{% blocktranslate %}Veb-saytga kirish --- Login {% endblocktranslate %} </h2>
+        <p>{% blocktranslate %}Iltimos saytga kirish uchun quyidagi formani to'ldiring {% endblocktranslate %}</p>
       
         <form method="post">
             {% csrf_token %}
             {{form.as_p}}
 
-            <button class="btn btn-success" type="submit">Login</button>
-            <h5> <a href="{% url 'password_reset' %}" style="color: brown;">Forgot password ? </a></h5>
+            <button class="btn btn-success" type="submit">{% blocktranslate %}Login {% endblocktranslate %}</button>
+            <h5> <a href="{% url 'password_reset' %}" style="color: brown;">{% blocktranslate %} Forgot password ?{% endblocktranslate %} </a></h5>
         </form>
 
-        <h4>Agar profilingiz bo'lmasa <a href="{% url 'user_register' %}" style="color: green;">ro'yhatdan o'tishingiz</a> mumkin.</h4>
+        <h4>{% blocktranslate %}Agar profilingiz bo'lmasa  {% endblocktranslate %}<a href="{% url 'user_register' %}" style="color: green;">{% blocktranslate %} ro'yhatdan o'tishingiz{% endblocktranslate %}</a>{% blocktranslate %}  mumkin.{% endblocktranslate %}</h4>
 {%endblock content%}
